@@ -22,16 +22,14 @@ function App() {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    height: '100dvh', 
-    minHeight: '100dvh',
-    width: '100vw',
+    minHeight: '100dvh', 
+    width: '100%',     
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     margin: 0,
     fontFamily: 'Arial, sans-serif',
-    overflow: 'hidden', 
-    padding: '12px', 
+    padding: '20px 12px', 
     position: 'relative',
     boxSizing: 'border-box'
   };
@@ -41,13 +39,12 @@ function App() {
   return (
     <div style={appStyle}>
       <style>{`
-       
         html, body {
           margin: 0;
           padding: 0;
           width: 100%;
-          height: 100%;
-          overflow: hidden;
+          min-height: 100%;
+          
         }
 
         @keyframes panelFadeIn {
@@ -109,42 +106,37 @@ function App() {
         
         .clean-transparent-panel {
           background-color: rgba(255, 255, 255, 0.25);
-          backdrop-filter: blur(10px); /* Pridaný moderný sklenený efekt */
+          backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
-          padding: 25px 20px; /* Zmenšený padding pre mobily */
+          padding: 20px 15px; 
           border-radius: 16px;
           border: 1px solid rgba(255, 255, 255, 0.4);
           box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
           max-width: 650px;
           width: 100%;
-          max-height: 85dvh; /* Panel nikdy nepresiahne 85% výšky displeja */
           display: flex;
           flex-direction: column;
-          justifyContent: center;
+          justify-content: center;
           position: relative;
           z-index: 2;
           opacity: 0;
           animation: panelFadeIn 0.6s ease-out 1s forwards;
           box-sizing: border-box;
-          overflow-y: auto;  
-          scrollbar-width: none; 
-        }
-
-        .clean-transparent-panel::-webkit-scrollbar {
-          display: none; 
+          
         }
 
         .smooth-drop-text {
           display: block;
           font-weight: 900;
-          font-size: 17px; 
-          line-height: 1.5;
+          font-size: 15px; 
+          line-height: 1.4;
           text-align: center;
           margin: 0;
           color: rgba(255, 255, 255, 0.65);
           filter: blur(10px);
           animation: globalDropAndFocus 1.8s cubic-bezier(0.25, 1, 0.5, 1) 1s forwards;
           will-change: transform, filter, color, text-shadow;
+          word-wrap: break-word;
         }
 
         .dust-particle {
@@ -172,7 +164,7 @@ function App() {
 
         .wow-name {
           font-family: 'Georgia', serif; 
-          font-size: 20px; 
+          font-size: 18px; 
           font-style: italic; 
           font-weight: 900;
           color: #b8860b;
@@ -182,12 +174,16 @@ function App() {
           will-change: transform, opacity, filter, text-shadow;
         }
 
-        
         .name-miki { animation: wowSignatureReveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 4.5s forwards; }
         .name-gabika { animation: wowSignatureReveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 5.0s forwards; }
         .name-jakub { animation: wowSignatureReveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 5.5s forwards; }
 
-       
+        
+        @media (min-width: 375px) {
+          .smooth-drop-text { font-size: 17px; }
+          .wow-name { font-size: 20px; }
+        }
+
         @media (min-width: 480px) {
           .smooth-drop-text { font-size: 22px; line-height: 1.6; }
           .wow-name { font-size: 24px; }
